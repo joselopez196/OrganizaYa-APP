@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t">
+<title id="t">OrganizaYa</title>
+<defs><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
+<rect width="512" height="512" fill="#0f172a"/>
+<rect x="82" y="82" width="348" height="348" rx="82" fill="#111936" stroke="#8b5cf6" stroke-width="8"/>
+<rect x="126" y="126" width="112" height="112" rx="30" fill="url(#p)"/><path d="m153 183 21 22 42-49" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="274" y="126" width="112" height="112" rx="30" fill="#292a66"/><rect x="296" y="150" width="68" height="63" rx="14" fill="#171a42" stroke="#8587ff" stroke-width="5"/><path d="M313 142v19M347 142v19" stroke="#e8e7ff" stroke-width="8" stroke-linecap="round"/><g fill="#7174d9"><rect x="307" y="174" width="12" height="12" rx="3"/><rect x="327" y="174" width="12" height="12" rx="3"/></g><rect x="347" y="174" width="12" height="12" rx="3" fill="#c084fc"/>
+<rect x="126" y="274" width="112" height="112" rx="30" fill="#182457"/><path d="M149 313h34l13-14h20c11 0 20 9 20 20v38c0 11-9 20-20 20h-67c-11 0-20-9-20-20v-24c0-11 9-20 20-20Z" fill="url(#b)"/>
+<rect x="274" y="274" width="112" height="112" rx="30" fill="#292a66"/><g fill="#8587ff"><rect x="300" y="300" width="24" height="24" rx="7"/><rect x="336" y="300" width="24" height="24" rx="7"/><rect x="300" y="336" width="24" height="24" rx="7"/></g><rect x="336" y="336" width="24" height="24" rx="7" fill="#c084fc"/>
+</svg>

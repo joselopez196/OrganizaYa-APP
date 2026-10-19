@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t d">
+<title id="t">OrganizaYa</title><desc id="d">Icono de productividad con tareas, calendario, archivos y accesos.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111936"/><stop offset=".55" stop-color="#16134a"/><stop offset="1" stop-color="#0b1024"/></linearGradient>
+  <linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+  <linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60a5fa"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect x="18" y="18" width="476" height="476" rx="108" fill="url(#bg)"/>
+<rect x="19" y="19" width="474" height="474" rx="107" fill="none" stroke="#8b5cf6" stroke-width="8" opacity=".9"/>
+<path d="M74 318c54 98 186 142 296 83 33-18 63-46 82-80" fill="none" stroke="url(#p)" stroke-width="24" stroke-linecap="round" opacity=".9" filter="url(#glow)"/>
+<rect x="92" y="96" width="145" height="145" rx="38" fill="url(#p)"/>
+<path d="m127 168 28 29 53-61" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="275" y="96" width="145" height="145" rx="38" fill="#292a66"/>
+<rect x="305" y="121" width="85" height="83" rx="18" fill="#171a42" stroke="#8587ff" stroke-width="6"/>
+<path d="M327 112v25M368 112v25" stroke="#e8e7ff" stroke-width="10" stroke-linecap="round"/>
+<g fill="#7174d9"><rect x="320" y="153" width="15" height="15" rx="4"/><rect x="345" y="153" width="15" height="15" rx="4"/><rect x="370" y="153" width="15" height="15" rx="4"/><rect x="320" y="178" width="15" height="15" rx="4"/><rect x="345" y="178" width="15" height="15" rx="4"/></g><rect x="370" y="178" width="15" height="15" rx="4" fill="#c084fc"/>
+<rect x="92" y="275" width="145" height="145" rx="38" fill="#182457"/>
+<path d="M121 325h45l16-18h26c14 0 25 11 25 25v51c0 14-11 25-25 25h-87c-14 0-25-11-25-25v-33c0-14 11-25 25-25Z" fill="url(#b)"/>
+<rect x="275" y="275" width="145" height="145" rx="38" fill="#292a66"/>
+<g fill="#8587ff"><rect x="309" y="309" width="31" height="31" rx="9"/><rect x="355" y="309" width="31" height="31" rx="9"/><rect x="309" y="355" width="31" height="31" rx="9"/></g><rect x="355" y="355" width="31" height="31" rx="9" fill="#c084fc"/>
+</svg>

@@ -1,0 +1,20 @@
+/* ===== VISTA · js/view/screens/hoy.js =====
+   Pantalla Hoy. */
+function vHoy(){
+  const td=today(),pend=S.tasks.filter(t=>!t.done),due=pend.filter(t=>t.due&&t.due<=td).sort(cmpT),late=due.filter(t=>t.due<td).length;
+  const undated=pend.filter(t=>!t.due).reverse(),hechasHoy=S.tasks.filter(t=>t.done&&t.doneAt===td).length;
+  const act=S.projects.filter(p=>!p.arch&&p.st!=='terminado'&&S.tasks.some(t=>t.p===p.id&&!t.done));
+  const go=(f,n,l,x)=>`<div class="st go" role="button" tabindex="0" onclick="${f}()" onkeydown="if(event.key==='Enter')${f}()"><b ${x||''}>${n}</b><span class="m">${l}</span></div>`;
+  $('#main').innerHTML=`<div class="homehead"><div class="brandmini"><img src="icons/organizaya-mark.svg" alt=""><div><strong>OrganizaYa</strong><span>Tu centro productivo</span></div></div><button class="btn g howbtn" onclick="tour(0)">¿Cómo funciona?</button></div><h2>Hoy</h2><div id="clk" class="clk">${clockHtml()}</div>
+  ${avisosHtml()}<div class="row hq"><input type="text" id="th" placeholder="Nueva tarea" aria-label="Nueva tarea" onkeydown="if(event.key==='Enter')addTH()">${dkBtn('thd',td)}<button class="btn" onclick="addTH()">Agregar tarea</button></div>
+  <div class="stats">${go('goHoy',due.length-late,'Vence hoy')}${go('goTar',pend.length,'Pendientes')}${go('goTar',late,'Vencidas',late?'class="late"':'')}${go('goHec',hechasHoy,'Hecho para hoy')}</div>
+  <h3>Acceso rápido</h3><div class="lg">${vis().slice(0,8).map(l=>linkTile(l,0)).join('')}</div>${vis().length>8?'<div class="m" style="margin-top:8px"><a href="#" onclick="tab=\'accesos\';draw();return false" style="color:var(--acc)">Ver todos los accesos</a></div>':''}
+  <h3>Para hoy y vencidas</h3>${due.slice(0,8).map(taskRow).join('')||'<div class="empty">Nada para hoy. Buen momento para avanzar un proyecto.</div>'}${due.length>8?`<div class="m"><a href="#" onclick="goTar();return false" style="color:var(--acc)">Ver las ${due.length} tareas</a></div>`:''}
+  ${undated.length?`<h3>Sin fecha</h3>${undated.slice(0,5).map(taskRow).join('')}${undated.length>5?`<div class="m"><a href="#" onclick="goTar();return false" style="color:var(--acc)">Ver las ${undated.length} sin fecha</a></div>`:''}`:''}
+  ${act.length?`<h3>Proyectos activos</h3><div class="pg">${act.map(projCard).join('')}</div>`:''}
+  ${S.files.length?`<h3>Últimos archivos</h3><div class="grid" id="gf">${S.files.slice(-6).reverse().map(fileCard).join('')}</div>`:''}`;
+  loadPv(S.files.slice(-6));
+  const lb=S.lastBackup,dias=lb?Math.floor((new Date(td)-new Date(lb))/864e5):null,old=dias===null||dias>=7;
+  const cuando=dias===null?'Aún no haces ninguna copia':dias===0?'Última copia: hoy':dias===1?'Última copia: ayer':'Última copia: hace '+dias+' días';
+  $('#main').insertAdjacentHTML('beforeend',`<div class="rs" style="${old?'border-color:#d97706':''}"><span class="m">${cuando}${old&&dias!==null?'. Haz otra':''} · ${cloud?(sbOn?'sincronizado con tu cuenta ('+esc(sb&&sb.em||'')+')':'sincronizado con tu cuenta de Claude'):'guardado en este dispositivo'}</span><span class="rb"><button class="btn g" onclick="exportar()">Exportar todo</button><button class="btn g" onclick="$('#imp').click()">Importar copia</button><button class="btn g" onclick="cycleTheme()">Tema: ${TL[theme]}</button>${dip?'<button class="btn g" onclick="instalar()">Instalar app</button>':''}${cloud&&!sbOn?'':'<button class="btn g" onclick="sbUi()">'+(sbOn?'Sincronización':'Sincronizar dispositivos')+'</button>'}${cloud&&ast&&S.files.some(f=>!f.aid)?'<button class="btn g" onclick="syncFiles()">Subir archivos a la nube</button>':''}</span></div>${cloud&&bkc?'<details class="m" style="margin-top:8px"><summary style="cursor:pointer">Copias automáticas en la nube</summary><div id="bkl"></div></details>':''}`);loadBk();
+}

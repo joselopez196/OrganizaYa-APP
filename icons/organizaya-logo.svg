@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="t d">
+<title id="t">OrganizaYa</title><desc id="d">OrganizaYa, tu centro productivo.</desc>
+<defs><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a855f7"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>
+<rect width="1200" height="320" rx="44" fill="#0f172a"/>
+<g transform="translate(36 36) scale(.48)">
+<rect x="18" y="18" width="476" height="476" rx="108" fill="#111936"/><rect x="19" y="19" width="474" height="474" rx="107" fill="none" stroke="#8b5cf6" stroke-width="8"/>
+<rect x="92" y="96" width="145" height="145" rx="38" fill="url(#p)"/><path d="m127 168 28 29 53-61" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="275" y="96" width="145" height="145" rx="38" fill="#292a66"/><rect x="305" y="121" width="85" height="83" rx="18" fill="#171a42" stroke="#8587ff" stroke-width="6"/><path d="M327 112v25M368 112v25" stroke="#e8e7ff" stroke-width="10" stroke-linecap="round"/>
+<rect x="92" y="275" width="145" height="145" rx="38" fill="#182457"/><path d="M121 325h45l16-18h26c14 0 25 11 25 25v51c0 14-11 25-25 25h-87c-14 0-25-11-25-25v-33c0-14 11-25 25-25Z" fill="#60a5fa"/>
+<rect x="275" y="275" width="145" height="145" rx="38" fill="#292a66"/><g fill="#8587ff"><rect x="309" y="309" width="31" height="31" rx="9"/><rect x="355" y="309" width="31" height="31" rx="9"/><rect x="309" y="355" width="31" height="31" rx="9"/></g><rect x="355" y="355" width="31" height="31" rx="9" fill="#c084fc"/>
+</g>
+<text x="330" y="150" font-family="Sora,Arial,sans-serif" font-size="92" font-weight="800" fill="#f8fafc">Organiza<tspan fill="#8b5cf6">Ya</tspan></text>
+<text x="334" y="213" font-family="Sora,Arial,sans-serif" font-size="32" font-weight="600" fill="#94a3b8" letter-spacing="3">TU CENTRO PRODUCTIVO</text>
+</svg>

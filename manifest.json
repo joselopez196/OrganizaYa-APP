@@ -1,0 +1,96 @@
+{
+  "name": "OrganizaYa",
+  "short_name": "OrganizaYa",
+  "description": "Organiza tus tareas, calendario, proyectos, archivos y accesos en un solo lugar.",
+  "lang": "es",
+  "dir": "ltr",
+  "id": "./",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "categories": [
+    "productivity",
+    "utilities",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/organizaya-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/organizaya-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Hoy",
+      "short_name": "Hoy",
+      "url": "./?tab=hoy",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Tareas",
+      "short_name": "Tareas",
+      "url": "./?tab=tareas",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Calendario",
+      "short_name": "Calendario",
+      "url": "./?tab=calendario",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "prefer_related_applications": false,
+  "handle_links": "preferred"
+}

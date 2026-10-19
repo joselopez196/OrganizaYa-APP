@@ -1,0 +1,64 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="css/base.css">
+<title>OrganizaYa · Tu centro productivo</title>
+<meta name="description" content="Organiza tus tareas, calendario, proyectos, archivos y accesos en un solo lugar.">
+<meta name="theme-color" content="#0f172a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OrganizaYa">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon-48.png">
+<link rel="icon" type="image/svg+xml" href="icons/organizaya-mark.svg">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head><body>
+<noscript>Esta app necesita JavaScript para funcionar.</noscript>
+<aside id="nav"></aside>
+<main id="main"></main>
+<div id="md" onclick="if(event.target===this)closeM()"></div><div id="toast"></div>
+<script src="js/core/util.js"></script>
+<script src="js/core/ics.js"></script>
+<script src="js/core/platform.js"></script>
+<script src="js/core/bus.js"></script>
+<script src="js/config/constants.js"></script>
+<script src="js/config/guide.js"></script>
+<script src="js/config/icons.js"></script>
+<script src="js/model/state.js"></script>
+<script src="js/model/storage.js"></script>
+<script src="js/model/links.js"></script>
+<script src="js/model/changes.js"></script>
+<script src="js/model/sync.js"></script>
+<script src="js/model/cloud-claude.js"></script>
+<script src="js/model/cloud-supabase.js"></script>
+<script src="js/model/validation.js"></script>
+<script src="js/model/queries.js"></script>
+<script src="js/view/state.js"></script>
+<script src="js/view/dom.js"></script>
+<script src="js/view/format.js"></script>
+<script src="js/view/theme.js"></script>
+<script src="js/view/clock.js"></script>
+<script src="js/view/components.js"></script>
+<script src="js/view/datepicker.js"></script>
+<script src="js/view/nav.js"></script>
+<script src="js/view/screens/hoy.js"></script>
+<script src="js/view/screens/tareas.js"></script>
+<script src="js/view/screens/calendario.js"></script>
+<script src="js/view/screens/proyectos.js"></script>
+<script src="js/view/screens/archivos.js"></script>
+<script src="js/view/screens/accesos.js"></script>
+<script src="js/view/screens/ayuda.js"></script>
+<script src="js/view/screens/tarea-form.js"></script>
+<script src="js/view/sync-ui.js"></script>
+<script src="js/controller/navigation.js"></script>
+<script src="js/controller/tasks.js"></script>
+<script src="js/controller/projects.js"></script>
+<script src="js/controller/files.js"></script>
+<script src="js/controller/links.js"></script>
+<script src="js/controller/backup.js"></script>
+<script src="js/controller/sync.js"></script>
+<script src="js/controller/system.js"></script>
+<script src="js/main.js"></script>
+
+</body></html>
