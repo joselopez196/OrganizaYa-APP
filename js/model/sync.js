@@ -4,7 +4,7 @@ let cloud=null,pushT=null;
 const snap=()=>JSON.stringify({tasks:S.tasks,projects:S.projects,links:S.links,files:S.files,lastBackup:S.lastBackup,at:S.at,lv:S.lv,adv:S.adv,del:S.del});
 const push=()=>{if(!cloud)return;clearTimeout(pushT);pushT=setTimeout(()=>cloud.set({json:snap()}).then(()=>autoBk()).catch(()=>{}),1200)};
 let ast=null,bkc=null,bkT=0;
-const mergeF=rf=>{if(!rf)return S.files;const ids=new Set(rf.map(f=>f.id));return rf.concat(S.files.filter(f=>!f.aid&&!ids.has(f.id)))};
+const mergeF=rf=>{if(!rf)return S.files;const del=S.del||{},remote=rf.filter(f=>f&&!del[f.id]),ids=new Set(remote.map(f=>f.id));return remote.concat(S.files.filter(f=>f&&!del[f.id]&&!ids.has(f.id)))};
 const UPT=f=>f.size<=20*1048576&&/^(image\/|video\/|text\/)|pdf|json|csv|markdown/.test(f.type||'');
 function applyRemote(r,init){
   const rw=(r.at||0)>(S.at||0),del=Object.assign({},r.del,S.del);
