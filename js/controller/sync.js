@@ -14,7 +14,7 @@ async function sbAuth(mode){const url=($('#sbu').value||'').trim().replace(/\/+$
     sbStore();cloud=null;await sbInit(true);
     if(sbOn){closeM();toast('Sincronización activada')}else sbUi()}
   catch(e){sbMsg('No hay conexión con Supabase. Revisa la URL y tu internet.')}}
-async function sbNow(){sbBusy=false;sbMsg('Sincronizando…');try{if(!cloud)await sbInit();const q=JSON.parse((await cloud.get()).data().json||'null');if(q)applyRemote(q);await cloud.set({json:snap()});draw();toast('Sincronizado');sbUi()}catch(e){sbUi()}}
+async function sbNow(){sbBusy=false;sbMsg('Sincronizando…');try{if(!cloud)await sbInit();if(!cloud)throw new Error('sin conexión');const sn=await cloud.get(),q=sn.exists?JSON.parse(sn.data().json):null;if(q)applyRemote(q);await cloud.set({json:snap()});sbErr='';draw();toast('Sincronizado');sbUi()}catch(e){sbErr=navigator.onLine===false?'Sin conexión. Se sincronizará al volver internet.':e&&e.message==='tabla'?'Falta crear la tabla o volver a ejecutar el SQL de Supabase.':'No se pudo sincronizar. Revisa la configuración y vuelve a intentar.';sbUi()}}
 function sbOut(){ask('¿Cerrar sesión? Tus datos se quedan en este dispositivo, pero dejarán de sincronizarse.','Cerrar sesión',()=>{try{if(sb&&sb.at)fetch(sb.url+'/auth/v1/logout',{method:'POST',headers:{apikey:sb.key,Authorization:'Bearer '+sb.at}}).catch(()=>{})}catch(e){}
   clearInterval(sbT);sb=null;sbOn=false;cloud=null;sbStore();sbErr='';draw();toast('Sesión cerrada')})}
 function sbCopy(){const done=()=>sbMsg('SQL copiado. Pégalo en Supabase > SQL Editor y toca Run.');try{navigator.clipboard.writeText(SBSQL).then(done,()=>sbMsg('No se pudo copiar. Mantén presionado el texto y cópialo.'))}catch(e){sbMsg('No se pudo copiar.')}}
