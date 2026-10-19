@@ -22,7 +22,7 @@ OrganizaYa reúne tareas, calendario, proyectos, archivos y accesos rápidos en 
 
 ## Sitio
 
-https://joselopez196.github.io/OrganizaYa/
+https://joselopez196.github.io/OrganizaYa-APP/
 
 ## Estado
 
