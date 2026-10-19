@@ -7,4 +7,4 @@ const loadMobileState=async()=>{const v=await stateGet();if(v&&v.json){try{const
 const saveLocal=()=>{const j=JSON.stringify(S);try{localStorage.setItem('mi-sistema',j)}catch(e){}statePut({json:j,at:S.at||Date.now()});};
 const openDB=()=>new Promise(r=>{try{const q=indexedDB.open('mi-sistema-files',1);q.onupgradeneeded=()=>q.result.createObjectStore('f');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
 const idb=(m,fn)=>new Promise(r=>{if(!db)return r(null);try{const q=fn(db.transaction('f',m).objectStore('f'));q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
-async function blobUrl(id){if(urls[id])return urls[id];const b=await idb('readonly',s=>s.get(id));if(b)return urls[id]=URL.createObjectURL(b);const f=S.files.find(x=>x.id===id);return f&&f.aid?'/_blob/'+f.aid:null}
+async function blobUrl(id){if(urls[id])return urls[id];let b=await idb('readonly',s=>s.get(id));const f=S.files.find(x=>x.id===id);if(!b&&f&&f.sbPath&&sbOn){b=await sbFileGet(f.sbPath);if(b)await idb('readwrite',s=>s.put(b,id))}if(b)return urls[id]=URL.createObjectURL(b);return f&&f.aid?'/_blob/'+f.aid:null}
