@@ -1,6 +1,6 @@
 /* ===== CONTROLADOR · js/controller/backup.js =====
    Controlador de copias de seguridad y calendario. */
-async function syncFiles(){if(!ast)return toast('La nube de archivos no está disponible');toast('Subiendo archivos a la nube…');let ok=0,big=0,no=0;for(const f of S.files){if(f.aid)continue;if(f.size>20*1048576){big++;continue}if(!UPT(f)){no++;continue}ok+=await cloudUp(f)}save();draw();toast(ok+' subidos'+(big?', '+big+' de más de 20 MB se quedan solo aquí':'')+(no?', '+no+' de tipo no admitido':''))}
+async function syncFiles(){if(!ast&&!sbOn)return toast('La nube de archivos no está disponible');toast('Subiendo archivos a la nube…');let ok=0,big=0,no=0,fail=0;for(const f of S.files){if((sbOn&&f.sbPath)||(!sbOn&&f.aid))continue;if(f.size>20*1048576){big++;continue}if(!UPT(f)){no++;continue}if(await cloudUp(f))ok++;else fail++}save();draw();toast(ok+' subidos'+(fail?', '+fail+' no se pudieron subir; revisa la sincronización':'')+(big?', '+big+' de más de 20 MB se quedan solo aquí':'')+(no?', '+no+' de tipo no admitido':''))}
 function restBk(id){ask('¿Restaurar la copia "'+id+'"? Reemplaza tus tareas, proyectos y accesos actuales. Tus archivos no se borran.','Restaurar',()=>restBk2(id))}
 async function restBk2(id){try{const r=JSON.parse((await bkc.doc(id).get()).data().json),c=cleanS(r);if(!c)throw 0;await bkc.doc('antes-de-restaurar').set({json:snap(),at:Date.now()});const ids=new Set(c.files.map(f=>f.id));replaceData(c);S.files=c.files.concat(S.files.filter(f=>!ids.has(f.id)));S.lv=c.lv||0;migL();save();draw();toast('Copia restaurada')}catch(e){toast('No se pudo restaurar esa copia')}}
 async function exportarCal(){
@@ -17,7 +17,7 @@ async function exportarCal(){
   let ok=await saveFile('mi-sistema-'+td+'.ics',ics);
   if(!ok&&saveFile.err==='rejected_extension')ok=await saveFile('mi-sistema-recordatorios-'+td+'.csv','\ufeffSubject,Start Date,End Date,All Day Event,Description\r\n'+csv.join('\r\n'));
   if(ok)toast('Listo: abre el archivo para añadirlo a tu calendario')}
-async function exportar(){toast('Preparando copia…');const files=[];let tot=0,skip=0;for(const f of S.files){let b=await idb('readonly',s=>s.get(f.id));if(!b&&f.aid){try{b=await(await fetch('/_blob/'+f.aid)).blob()}catch(e){}}if(b){if(tot+b.size>150*1048576){skip++;continue}tot+=b.size;files.push({id:f.id,data:await b64(b)})}}
+async function exportar(){toast('Preparando copia…');const files=[];let tot=0,skip=0;for(const f of S.files){let b=await idb('readonly',s=>s.get(f.id));if(!b&&f.sbPath&&sbOn)b=await sbFileGet(f.sbPath);if(!b&&f.aid){try{b=await(await fetch('/_blob/'+f.aid)).blob()}catch(e){}}if(b){if(tot+b.size>150*1048576){skip++;continue}tot+=b.size;files.push({id:f.id,data:await b64(b)})}}
   if(await saveFile('mi-sistema-copia-'+today()+'.json',JSON.stringify({v:1,S,files}))){S.lastBackup=today();save();toast(skip?'Copia guardada. '+skip+(skip>1?' archivos grandes no se incluyeron':' archivo grande no se incluyó')+' (siguen en este dispositivo)':'Copia guardada');if(tab==='hoy')draw()}}
 async function importar(file){const inp=$('#imp');try{if(!file)return;const j=JSON.parse(await file.text()),c=j&&cleanS(j.S);if(!c)throw 0;
   ask('Esta copia tiene '+c.tasks.length+' tareas, '+c.projects.length+' proyectos y '+c.files.length+' archivos. Reemplaza todo lo que tienes ahora. ¿Continuar?','Reemplazar',()=>importar2(c,j.files))}catch(e){toast('Ese archivo no es una copia válida')}finally{if(inp)inp.value=''}}
@@ -27,6 +27,6 @@ async function importar2(c,bl){try{
   const have=new Set(blobs.map(x=>x[0]));
   for(const f of S.files)await idb('readwrite',s=>s.delete(f.id));
   Object.keys(urls).forEach(k=>{try{URL.revokeObjectURL(urls[k])}catch(e){}delete urls[k]});
-  replaceData(c);S.files=c.files.filter(f=>have.has(f.id)||f.aid);S.adv=c.adv;S.lastBackup=c.lastBackup;S.lv=c.lv;
+  replaceData(c);S.files=c.files.filter(f=>have.has(f.id)||f.aid||f.sbPath);S.adv=c.adv;S.lastBackup=c.lastBackup;S.lv=c.lv;
   for(const x of blobs)await idb('readwrite',s=>s.put(x[1],x[0]));
   migL();save();draw();toast('Copia restaurada')}catch(e){toast('No se pudo restaurar la copia')}}
