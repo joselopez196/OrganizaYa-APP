@@ -196,3 +196,64 @@ main{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env
 .brandmini span{display:block;color:var(--mut);font-size:clamp(.72rem,1.8vw,.82rem);line-height:1.2}
 .howbtn{flex:0 0 auto}
 @media(max-width:430px){.homehead{gap:8px}.brandmini{gap:10px}}
+
+
+/* ===== Mejora responsive de la pantalla Hoy ===== */
+.homehead{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.brandmini{display:flex;align-items:center;gap:12px;min-width:0}
+.brandmini img{width:48px;height:48px;object-fit:contain;flex:none}
+.brandmini strong,.brandmini span{display:block}
+.brandmini strong{font-size:1.15rem;font-weight:800;letter-spacing:-.025em}
+.brandmini span{color:var(--mut);font-size:.9rem}
+.howbtn{white-space:nowrap}
+.homehead+h2{margin-top:4px}
+.hq{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:stretch;gap:8px}
+.hq>input[type=text]{width:100%;min-height:48px}
+.hq>.dkb,.hq>button{min-height:48px}
+.hq>button.btn{white-space:nowrap}
+.stats{align-items:stretch}
+.st.go{min-width:0;min-height:94px;display:flex;flex-direction:column;justify-content:center;gap:7px}
+.st.go .m{line-height:1.35;overflow-wrap:anywhere}
+.st.go:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.st.go .late{color:#ef4444}
+.rs.al{gap:12px}
+.rs.al .avl{max-height:180px}
+.rs.al>.m{font-size:.9rem;line-height:1.45;overflow-wrap:anywhere}
+.lg{align-items:stretch}
+@media(max-width:720px){
+  main{padding:16px 14px calc(112px + env(safe-area-inset-bottom,0px))}
+  .homehead{align-items:flex-start;gap:10px;margin-bottom:16px}
+  .brandmini img{width:44px;height:44px}
+  .brandmini strong{font-size:1.05rem}
+  .brandmini span{font-size:.82rem}
+  .howbtn{padding:9px 11px;font-size:.82rem;white-space:normal}
+  .clk b{font-size:2.35rem}
+  .hq{grid-template-columns:minmax(0,1fr) minmax(112px,.62fr);gap:8px}
+  .hq>input[type=text]{grid-column:1;grid-row:1}
+  .hq>input[type=date],.hq>.dkb{grid-column:2;grid-row:1;width:100%;min-width:0}
+  .hq>button.btn{grid-column:1/-1;grid-row:2;width:100%;min-height:48px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:8px 0 18px}
+  .st.go{min-height:88px;padding:12px}
+  .st.go b{font-size:1.8rem}
+  .st.go .m{font-size:.82rem}
+  .rs.al{padding:12px;gap:10px}
+  .rs.al>div:first-child{align-items:flex-start}
+  .rs.al .dkb{max-width:100%;white-space:normal}
+  .lg{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .lk{padding:12px 6px 10px;gap:8px;font-size:.8rem}
+  .lk b{width:40px;height:40px}
+  .rs:not(.al){align-items:flex-start}
+  .rb{width:100%}
+  .rb .btn{flex:1}
+}
+@media(max-width:380px){
+  .howbtn{max-width:125px}
+  .hq{grid-template-columns:minmax(0,1fr) 108px}
+  .stats{gap:7px}
+  .st.go{padding:10px}
+  .st.go b{font-size:1.55rem}
+  .lg{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){
+  .al,.anim>*{animation:none!important}
+}
