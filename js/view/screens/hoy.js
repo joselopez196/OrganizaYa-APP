@@ -4,7 +4,7 @@ function vHoy(){
   const td=today(),pend=S.tasks.filter(t=>!t.done),due=pend.filter(t=>t.due&&t.due<=td).sort(cmpT),late=due.filter(t=>t.due<td).length;
   const undated=pend.filter(t=>!t.due).reverse(),hechasHoy=S.tasks.filter(t=>t.done&&t.doneAt===td).length;
   const act=S.projects.filter(p=>!p.arch&&p.st!=='terminado'&&S.tasks.some(t=>t.p===p.id&&!t.done));
-  const go=(f,n,l,x)=>`<div class="st go" role="button" tabindex="0" onclick="${f}()" onkeydown="if(event.key==='Enter')${f}()"><b ${x||''}>${n}</b><span class="m">${l}</span></div>`;
+  const go=(f,n,l,x)=>`<div class="st go" role="button" tabindex="0" aria-label="${l}: ${n}" onclick="${f}()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${f}()}"><b ${x||''}>${n}</b><span class="m">${l}</span></div>`;
   $('#main').innerHTML=`<div class="homehead"><div class="brandmini"><img src="icons/organizaya-mark.svg" alt=""><div><strong>OrganizaYa</strong><span>Tu centro productivo</span></div></div><button class="btn g howbtn" onclick="tour(0)">¿Cómo funciona?</button></div><h2>Hoy</h2><div id="clk" class="clk">${clockHtml()}</div>
   ${avisosHtml()}<div class="row hq"><input type="text" id="th" placeholder="Nueva tarea" aria-label="Nueva tarea" onkeydown="if(event.key==='Enter')addTH()">${dkBtn('thd',td)}<button class="btn" onclick="addTH()">Agregar tarea</button></div>
   <div class="stats">${go('goHoy',due.length-late,'Vence hoy')}${go('goTar',pend.length,'Pendientes')}${go('goTar',late,'Vencidas',late?'class="late"':'')}${go('goHec',hechasHoy,'Hecho para hoy')}</div>
