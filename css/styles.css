@@ -257,3 +257,54 @@ main{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env
 @media(prefers-reduced-motion:reduce){
   .al,.anim>*{animation:none!important}
 }
+
+
+/* ===== Ajustes finales de usabilidad para Hoy ===== */
+.st.go{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.st.go:focus-visible{outline:3px solid var(--acc);outline-offset:3px;box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+.st.go:active{transform:scale(.985)}
+.st.go .m{display:block}
+.hq{align-items:stretch}
+.hq .dkb{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.hq .dkb span{min-width:0}
+.rs.al{box-shadow:0 8px 24px -22px #d97706}
+.rs.al b{line-height:1.35}
+.rs.al .m{overflow-wrap:anywhere}
+.rs.al .avl{max-height:min(34vh,220px);overscroll-behavior:contain}
+.rs.al .avo{min-height:42px}
+.lg .lk{min-height:108px}
+.lg .lk:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+#main h3{scroll-margin-top:16px}
+#main .empty{line-height:1.6}
+@media(max-width:720px){
+  main{padding-bottom:calc(118px + env(safe-area-inset-bottom,0px))}
+  .clk{margin-bottom:16px}
+  .clk b{font-size:clamp(2rem,10vw,2.5rem);overflow-wrap:anywhere}
+  .clk span{font-size:.9rem;line-height:1.45}
+  .hq{grid-template-columns:minmax(0,1fr) minmax(104px,.7fr);gap:8px}
+  .hq input#th{min-width:0}
+  .hq .dkb{padding:9px 8px;font-size:.9rem;gap:5px}
+  .hq>button.btn{min-height:48px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:10px}
+  .st.go{min-height:84px}
+  .st.go b{font-size:clamp(1.5rem,7vw,1.9rem)}
+  .rs.al{margin-bottom:12px!important}
+  .rs.al>div:first-child{width:100%}
+  .rs.al>div:first-child>b{flex:1}
+  .rs.al .rb,.rs:not(.al) .rb{display:flex;flex-wrap:wrap;width:100%}
+  .rs.al .rb .btn,.rs:not(.al) .rb .btn{flex:1 1 130px}
+  .lg{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .lg .lk{min-height:98px;padding:12px 5px 10px;font-size:.78rem}
+  .lg .lk b{width:38px;height:38px;border-radius:11px}
+  #main h3{margin-top:20px}
+}
+@media(max-width:380px){
+  .hq{grid-template-columns:minmax(0,1fr) 102px}
+  .hq .dkb{font-size:.82rem;padding:8px 6px}
+  .lg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lg .lk{min-height:92px}
+  .rs.al .dkb{font-size:.82rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .st.go:active{transform:none}
+}
